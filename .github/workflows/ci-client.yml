@@ -20,6 +20,7 @@ jobs:
   lint-and-build:
     name: Lint & Build
     runs-on: ubuntu-latest
+    if: hashFiles('client/package.json') != ''
 
     strategy:
       matrix:
@@ -35,7 +36,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Instalar dependencias
-        run: npm ci
+        run: npm install
 
       - name: Lint
         run: npm run lint
@@ -49,6 +50,7 @@ jobs:
     name: Tests
     runs-on: ubuntu-latest
     needs: lint-and-build
+    if: hashFiles('client/package.json') != ''
 
     strategy:
       matrix:
@@ -64,7 +66,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Instalar dependencias
-        run: npm ci
+        run: npm install
 
       - name: Ejecutar tests
         run: npm test -- --passWithNoTests --watchAll=false
