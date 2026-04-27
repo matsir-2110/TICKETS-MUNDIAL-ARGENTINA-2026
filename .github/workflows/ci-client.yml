@@ -33,8 +33,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'
-          cache-dependency-path: client/package-lock.json
 
       - name: Instalar dependencias
         run: npm ci
@@ -64,8 +62,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'
-          cache-dependency-path: client/package-lock.json
 
       - name: Instalar dependencias
         run: npm ci
