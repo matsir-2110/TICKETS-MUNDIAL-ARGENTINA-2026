@@ -1,9 +1,23 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import { SupabaseService } from '../supabase/supabase.service';
 
 @Injectable()
 export class PedidosRepository {
+    constructor(private readonly supabaseService: SupabaseService) {}
+
     async crearPedido(datosPedido: any) {
-        //aca tiene que ir el INSERT a supabase en la tabla pedidos
-        return { id: 'uuid-pedido-falso-123' };
+        const supabase = this.supabaseService.getClient();
+        const { data, error } = await supabase
+            .from('Pedidos')
+            .insert(datosPedido)
+            .select()
+            .single();
+
+        if (error) {
+            console.error('Error al crear pedido en Supabase:', error);
+            throw new InternalServerErrorException('Error al registrar el pedido');
+        }
+
+        return data;
     }
 }
