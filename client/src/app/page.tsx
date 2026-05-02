@@ -1,8 +1,4 @@
 
-
-
-
-
 'use client';
 
 import Link from "next/link";
@@ -23,6 +19,7 @@ const logos: { [key: string]: string } = {
   'ARGELIA': '/logo-argelia.png',
   'AUSTRIA': '/logo-austria.png',
   'JORDANIA': '/logo-jordania.png',
+  'BRASIL': '/logo-brasil.png',
 };
 
 const getLogo = (equipo: string) => logos[equipo.toUpperCase()] ?? '/Logo-Copa-Mundial.png';
