@@ -1,4 +1,4 @@
-/*
+
 
 'use client';
 
@@ -126,4 +126,3 @@ export default function PaginaCompra() {
     </>
   );
 }
-*/
