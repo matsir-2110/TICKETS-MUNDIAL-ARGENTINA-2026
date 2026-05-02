@@ -1,16 +1,18 @@
 import { Controller, Post, Body } from '@nestjs/common';
 import { TicketsService } from './tickets.service';
+import { ComprarTicketsDto } from './dto/comprar-tickets.dto';
 
 @Controller('tickets')
 export class TicketsController {
-    constructor(private readonly ticketsService: TicketsService) {}
+    constructor(private readonly ticketsService: TicketsService) { }
 
     @Post('comprar')
-    async comprarTickets(
-        @Body('partidoId') partidoId: number,
-        @Body('usuarioId') usuarioId: string,
-        @Body('cantidad') cantidad: number
-    ) {
-        return await this.ticketsService.procesarCompra(partidoId, usuarioId, cantidad);
+    async comprarTickets(@Body() body: ComprarTicketsDto) {
+        return await this.ticketsService.procesarCompra(
+            body.partidoId,
+            body.usuarioId,
+            body.cantidad,
+            body.sector
+        );
     }
 }

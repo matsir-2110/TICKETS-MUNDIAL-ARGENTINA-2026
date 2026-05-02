@@ -11,7 +11,7 @@ export class TicketsService {
         private readonly ticketsRepo: TicketsRepository,
     ) { }
 
-    async procesarCompra(partidoId: number, usuarioId: string, cantidadAComprar: number) {
+    async procesarCompra(partidoId: number, usuarioId: string, cantidadAComprar: number, sector: string) {
 
         // te permite comprar hasta 6 entradas nms
         if (cantidadAComprar < 1 || cantidadAComprar > 6) {
