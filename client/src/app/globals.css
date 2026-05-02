@@ -18,8 +18,26 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-color: rgb(36, 35, 35);
+    background-image: url('/fondo-header.png');
+    background-size: cover;
+    background-position: center;
     padding: 0.8rem 1rem;
+}
+
+.btn-header-login {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+}
+
+.btn-header-login:hover {
+    background-color: #dddddd;
 }
 
 .logo-mundial {
