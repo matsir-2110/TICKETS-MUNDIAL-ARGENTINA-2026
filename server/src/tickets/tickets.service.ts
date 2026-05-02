@@ -48,7 +48,7 @@ export class TicketsService {
                 ticketsAGenerar.push({
                     pedido_id: nuevoPedido.id,
                     partido_id: partido.id,
-                    sector: 'General'
+                    sector: sector
                 });
             }
 
