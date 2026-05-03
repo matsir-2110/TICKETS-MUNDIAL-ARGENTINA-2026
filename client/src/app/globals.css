@@ -333,7 +333,36 @@ h1 {
   text-decoration: underline;
 }
 
+/* Diseño para telefonos */
+@media (max-width: 768px) /* el media me permite adaptar la imgaen cuando se rompe la estructura */ {
+  
+  .login-card {
+    flex-direction: column;
+  }
 
+  .login-image-container {
+    height: 260px;
+    flex: none; 
+    background-color: #ffffff;
+  }
+
+  .login-image {
+    height: 100%;
+    width: 100%;
+    padding-top: 20px;
+    object-fit: contain;
+  }
+
+  .login-box {
+    padding: 20px 20px 30px 20px;
+  }
+
+  
+  .login-titulo {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+}
 
 /* ========== Seleccion de entradas (Mobile First) ========== */
 
