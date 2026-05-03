@@ -78,17 +78,19 @@ return (
       </header>
 
       <main className="login-main">
-        {/* flex para poner cosas al lado del login */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '50px', padding: '40px' }}>
+        {/* LA TARJETA UNIFICADA */}
+        <div className="login-card">
           
-          {/* logo verde del mundial */}
-          <img 
-            src="/logo-login-verde.png" 
-            alt="Mundial 2026 Verde" 
-            style={{ maxWidth: '400px', borderRadius: '10px' }} 
-          />
+          {/* MITAD IZQUIERDA: La imagen */}
+          <div className="login-image-container">
+            <img 
+              src="/logo-login-verde.png" 
+              alt="Mundial 2026 Verde" 
+              className="login-image" 
+            />
+          </div>
 
-          {}
+          {/* MITAD DERECHA: El Formulario */}
           <div className="login-box">
             <h2 className="login-titulo">FIFA WORLD CUP 2026</h2>
             
@@ -100,6 +102,12 @@ return (
                 <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} className="input" required />
                 <input type="password" placeholder="Contraseña" value={password} onChange={(e) => setPassword(e.target.value)} className="input" required />
                 <button type="submit" className="btn-primary" disabled={loading}>{loading ? 'CARGANDO...' : 'INICIAR SESIÓN'}</button>
+                
+                {/* Botones extra para navegar (ajustalos según tu lógica) */}
+                <div className="form-links">
+                  <button type="button" onClick={() => setView('register')} className="btn-link">¿No tenés cuenta? Registrate</button>
+                  <button type="button" className="btn-link">Olvidé mi contraseña</button>
+                </div>
               </form>
             )}
 
@@ -109,6 +117,10 @@ return (
                 <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} className="input" required />
                 <input type="password" placeholder="Contraseña" value={password} onChange={(e) => setPassword(e.target.value)} className="input" required />
                 <button type="submit" className="btn-primary" disabled={loading}>{loading ? 'CARGANDO...' : 'REGISTRARSE'}</button>
+                
+                <div className="form-links">
+                  <button type="button" onClick={() => setView('login')} className="btn-link">Ya tengo cuenta. Iniciar sesión</button>
+                </div>
               </form>
             )}
           </div>
