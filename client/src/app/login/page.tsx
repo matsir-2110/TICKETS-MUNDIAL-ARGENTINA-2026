@@ -69,31 +69,26 @@ export default function PaginaLogin() {
     setLoading(false);
   };
 
-return (
+  return (
     <>
-      <header className="header">
-        {}
-        <img className="logo-mundial" src="/Logo-Copa-Mundial.png" alt="Logo" />
-        <h1>FIFA WORLD CUP 2026</h1>
-      </header>
 
       <main className="login-main">
         {/* LA TARJETA UNIFICADA */}
         <div className="login-card">
-          
+
           {/* MITAD IZQUIERDA: La imagen */}
           <div className="login-image-container">
-            <img 
-              src="/logo-login-verde.png" 
-              alt="Mundial 2026 Verde" 
-              className="login-image" 
+            <img
+              src="/logo-login-verde.png"
+              alt="Mundial 2026 Verde"
+              className="login-image"
             />
           </div>
 
           {/* MITAD DERECHA: El Formulario */}
           <div className="login-box">
             <h2 className="login-titulo">FIFA WORLD CUP 2026</h2>
-            
+
             {mensaje && <p style={{ color: 'green', marginBottom: '1rem', textAlign: 'center' }}>{mensaje}</p>}
             {error && <p style={{ color: 'red', marginBottom: '1rem', textAlign: 'center' }}>{error}</p>}
 
@@ -102,7 +97,7 @@ return (
                 <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} className="input" required />
                 <input type="password" placeholder="Contraseña" value={password} onChange={(e) => setPassword(e.target.value)} className="input" required />
                 <button type="submit" className="btn-primary" disabled={loading}>{loading ? 'CARGANDO...' : 'INICIAR SESIÓN'}</button>
-                
+
                 {/* Botones extra para navegar (ajustalos según tu lógica) */}
                 <div className="form-links">
                   <button type="button" onClick={() => setView('register')} className="btn-link">¿No tenés cuenta? Registrate</button>
@@ -117,7 +112,7 @@ return (
                 <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} className="input" required />
                 <input type="password" placeholder="Contraseña" value={password} onChange={(e) => setPassword(e.target.value)} className="input" required />
                 <button type="submit" className="btn-primary" disabled={loading}>{loading ? 'CARGANDO...' : 'REGISTRARSE'}</button>
-                
+
                 <div className="form-links">
                   <button type="button" onClick={() => setView('login')} className="btn-link">Ya tengo cuenta. Iniciar sesión</button>
                 </div>

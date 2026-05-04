@@ -59,8 +59,6 @@ export default function Page() {
   return (
     <>
       <header className="header">
-        <img className="logo-mundial" src="/Logo-Copa-Mundial.png" alt="Logo" />
-        <h1>FIFA WORLD CUP</h1>
         <Link href="/login" className="btn-header-login">
           Ingresar
         </Link>
