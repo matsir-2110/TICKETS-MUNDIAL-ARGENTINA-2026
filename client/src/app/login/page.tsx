@@ -7,7 +7,7 @@ import { createClient } from '../../utils/supabase/client';
 
 type View = 'login' | 'register' | 'forgot';
 
-default export function PaginaLogin() {
+export default function PaginaLogin() {
   const [view, setView] = useState<View>('login');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
