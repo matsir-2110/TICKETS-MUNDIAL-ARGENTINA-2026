@@ -65,10 +65,6 @@ export default function PaginaCompra() {
 
   return (
     <>
-      <header className="header">
-        <img className="logo-mundial" src="/Logo-Copa-Mundial.png" alt="Logo" />
-        <h1>FIFA WORLD CUP</h1>
-      </header>
 
       <main className="main-compra">
         <h2 className="titulo">SELECCIONÁ TUS ENTRADAS</h2>
