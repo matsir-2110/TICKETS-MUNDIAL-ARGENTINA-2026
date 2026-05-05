@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "nest build",
+    "lint": "npx tsc --noEmit",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
