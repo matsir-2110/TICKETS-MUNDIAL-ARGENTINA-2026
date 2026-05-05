@@ -20,9 +20,9 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-image: url('/fondo-header.png');
+    background-image: url('/fondo-header10.png');
     background-size: cover;
-    background-position: center 5%;
+    background-position: center;
     padding: 0.8rem 1rem;
 }
 
