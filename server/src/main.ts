@@ -15,13 +15,14 @@ async function bootstrap() {
     }),
   );
 
+
   // Habilitar CORS para permitir peticiones desde el frontend
   app.enableCors({
     origin: 'http://localhost:3000',
   });
 
   await app.listen(3001);
-  console.log('Servidor corriendo en: http://localhost:3000');
+  console.log('Servidor corriendo en: http://localhost:3001');
 }
 
 void bootstrap();

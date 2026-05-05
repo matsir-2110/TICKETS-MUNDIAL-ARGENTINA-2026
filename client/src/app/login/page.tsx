@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { createClient } from '../../utils/supabase/client';
 
 type View = 'login' | 'register' | 'forgot';
 
@@ -17,7 +16,6 @@ export default function PaginaLogin() {
   const [error, setError] = useState('');
 
   const router = useRouter();
-  const supabase = createClient();
 
   const resetForm = () => {
     setEmail('');
@@ -33,12 +31,14 @@ export default function PaginaLogin() {
     setError('');
     setMensaje('');
 
-    const { error: signInError } = await supabase.auth.signInWithPassword({ email, password });
-    if (signInError) {
-      setError('Email o contraseña incorrectos.');
-      setLoading(false);
-      return;
-    }
+    const res = await fetch('http://localhost:3001/usuarios/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password }),
+    });
+
+    const data = await res.json();
+    if (!res.ok) { setError(data.message || 'Error al iniciar sesión.'); setLoading(false); return; }
 
     setLoading(false);
     router.push('/');
@@ -50,19 +50,16 @@ export default function PaginaLogin() {
     setError('');
     setMensaje('');
 
-    const { error: signUpError } = await supabase.auth.signUp({
-      email,
-      password,
-      options: { data: { full_name: name } },
+    const res = await fetch('http://localhost:3001/usuarios/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password, full_name: name }),
     });
 
-    if (signUpError) {
-      setError(`No se pudo crear la cuenta: ${signUpError.message}`);
-      setLoading(false);
-      return;
-    }
+    const data = await res.json();
+    if (!res.ok) { setError(data.message || 'Error al registrarse.'); setLoading(false); return; }
 
-    setMensaje('Cuenta creada. Revisa tu email para confirmarla.');
+    setMensaje('Cuenta creada. Revisá tu email para confirmarla.');
     setLoading(false);
   };
 
@@ -72,15 +69,16 @@ export default function PaginaLogin() {
     setError('');
     setMensaje('');
 
-    const { error: resetError } = await supabase.auth.resetPasswordForEmail(email);
+    const res = await fetch('http://localhost:3001/usuarios/forgot-password', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email }),
+    });
 
-    if (resetError) {
-      setError(`No se pudo enviar el email: ${resetError.message}`);
-      setLoading(false);
-      return;
-    }
+    const data = await res.json();
+    if (!res.ok) { setError(data.message || 'Error al enviar email.'); setLoading(false); return; }
 
-    setMensaje('Listo. Revisa tu email para restablecer la contraseña.');
+    setMensaje('Listo. Revisá tu email para restablecer la contraseña.');
     setLoading(false);
   };
 
