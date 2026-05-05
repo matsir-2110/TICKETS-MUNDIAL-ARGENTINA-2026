@@ -186,6 +186,15 @@ export default function PaginaCompra() {
         <button type="button" className="btn-continuar" onClick={onClickComprar} disabled={loading}>
           {loading ? 'PROCESANDO...' : 'CONTINUAR →'}
         </button>
+
+        <button 
+          type="button" 
+          className="btn-cancelar"
+          onClick={() => router.back()} 
+          disabled={loading}
+        >
+          CANCELAR
+        </button>
       </div>
     </main>
   );
