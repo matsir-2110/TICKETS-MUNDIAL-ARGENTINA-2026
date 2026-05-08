@@ -98,33 +98,6 @@ Los usuarios son manejados directamente por Supabase Auth (tabla `auth.users`).
 
 ---
 
-## Diagrama de clases
-
-```
-Usuario                   Partido
---------                  --------
-- id (UUID)               - id
-- email                   - equipo_a
-- nombre                  - equipo_b
-                          - fecha
-+ login()                 - precio_base
-+ register()              - stock_disponible
-                          + actualizarStock()
-
-     1                         1
-     |                         |
-     * crea                    * pertenece a
-     |                         |
-   Pedido --------*--------- Ticket
-   ------                   ------
-   - id                     - id
-   - usuario_id             - pedido_id
-   - monto_total            - partido_id
-   - estado_pago            - sector
-```
-
----
-
 ## Modelo y metodología
 
 **Modelo:** incremental — se fue construyendo por módulos (primero partidos, luego tickets/pedidos, luego usuarios y frontend).
